@@ -1,0 +1,15 @@
+app:
+  build: app/.
+  volumes:
+  - ./app/.:/usr/src/app:ro
+  ports:
+      - "3000:3000"
+  environment:
+  - HOSTNAMEMONGO=mongo
+  links:
+  - mongo
+
+mongo:
+    image: mongo:3
+    ports:
+    - "27017:27017"
