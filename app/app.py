@@ -1,10 +1,17 @@
+import os.path
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
 
-def greeting(name: str) -> str:
-    return 'Hello ' + name
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-print(greeting('Peter'))
+app = Flask(__name__)
+Bootstrap(app)
 
-try:
-    print(greeting(1))
-except TypeError as ter:
-    print(ter)
+
+@app.route("/")
+def hello():
+    return render_template('index.html')
+
+
+if __name__ == "__main__":
+    app.run()
