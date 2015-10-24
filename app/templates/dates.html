@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Dates</h1>
+
+    {% for date in dates %}
+        {{date}} <br>
+    {% endfor %}
+
+    <hr>
+
+    {% for date in dates %}
+        <event data={{date}}></event>
+    {% endfor %}
+
+<script type="riot/tag" src="/static/tag/event.tag"></script>
+{% endblock %}
