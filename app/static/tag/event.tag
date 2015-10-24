@@ -4,7 +4,7 @@
     <script>
     this.on('mount', function() {
 
-        JSON.parse(opts.data)
+        //JSON.parse(opts.data) only by real json
 
         this.headline.innerText = this.headline.innerText + ' ' +  opts.data
     })

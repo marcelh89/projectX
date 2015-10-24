@@ -17,7 +17,7 @@ def random():
 
     dates_list = []
     for x in range(5):
-        now = str(arrow.utcnow())
+        now = str(arrow.utcnow().format('YYYY-MM-DD HH:mm:ss'))
         dates_list.append(now)
 
     return render_template('dates.html', dates = dates_list)
