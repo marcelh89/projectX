@@ -1,19 +1,17 @@
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
 
 {% block styles %}
     {{ super() }}
-    <link rel="stylesheet"
-          href="{{ url_for('.static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
 
     <div class="content">
 
-    <h1>Hallo Bootstrapwelt :D</h1>
-
+        <h1>Hallo Bootstrapwelt :D</h1>
+        <hello></hello>
     </div>
 
-
+<script type="riot/tag" src="/static/tag/hello.tag"></script>
 {% endblock %}
-</div>
