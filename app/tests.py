@@ -4,7 +4,7 @@ import os.path
 import unittest
 
 
-class FlaskrTestCase(unittest.TestCase):
+class ProjectXTestCase(unittest.TestCase):
     def setUp(self):
         pass
 
@@ -12,7 +12,7 @@ class FlaskrTestCase(unittest.TestCase):
         pass
 
     def test_app_exists(self):
-        app_exists = os.path.isfile('app/static_typing.py')
+        app_exists = os.path.isfile('app/main.py')
         assert app_exists
 
 
