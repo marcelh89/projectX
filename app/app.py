@@ -1,6 +1,11 @@
 """ APP """
 
-from flask import Flask
+from flask import Flask, jsonify
+from flask_restful import Resource, Api
+import api
 
 app = Flask(__name__)
 app.config.from_object('config')
+
+""" API """
+api = api.setup_api(app)
