@@ -15,7 +15,7 @@
     <hr>
 
     {% for date in dates %}
-        <event data={{date | safe }}></event>
+        <event data={{ date| tojson }}></event>
     {% endfor %}
 
 <script type="riot/tag" src="/static/tag/event.tag"></script>

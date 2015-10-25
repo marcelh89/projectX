@@ -5,6 +5,8 @@
     this.on('mount', function() {
 
         console.log(opts)
+        data = JSON.parse(JSON.stringify(opts))
+        console.log(data)
         //this.headline.innerText = 'Event:' + data.date
 
     })
