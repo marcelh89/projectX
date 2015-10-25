@@ -5,7 +5,7 @@
     <script>
     this.on('mount', function() {
         console.log(opts)
-        urlwithid =  "api/randomevents?id=" + opts.id
+        urlwithid =  "/api/randomevents/?id=" + opts.id
         var that = this
         $.ajax({
             method: "GET",

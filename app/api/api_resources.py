@@ -3,7 +3,7 @@ __author__ = 'marcman'
 import arrow
 from flask import jsonify
 from flask_restful import Resource
-
+import json
 
 class HelloWorld(Resource):
     def get(self):
@@ -21,4 +21,7 @@ class api_randomevents(Resource):
             dicEvent['date'] = now
             dates_list.append(dicEvent)
         data['dates'] = dates_list
-        return jsonify(data)
+        return json.dumps(data) # from flask import jsonify geht nicht, subevents werden nicht angezeigt
+
+
+

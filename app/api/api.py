@@ -1,7 +1,7 @@
 __author__ = 'marcman'
 
 from flask_restful import Api
-from .models import *
+from .api_resources import *
 
 
 # resourcen definieren
