@@ -2,7 +2,7 @@
 
 from flask import Flask, jsonify
 from flask_restful import Resource, Api
-import api
+from api import api
 
 app = Flask(__name__)
 app.config.from_object('config')
