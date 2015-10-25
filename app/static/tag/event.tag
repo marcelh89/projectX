@@ -4,9 +4,9 @@
     <script>
     this.on('mount', function() {
 
-        //JSON.parse(opts.data) only by real json
+        console.log(opts)
+        //this.headline.innerText = 'Event:' + data.date
 
-        this.headline.innerText = this.headline.innerText + ' ' +  opts.data
     })
     </script>
 </event>

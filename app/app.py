@@ -18,7 +18,12 @@ def random():
     dates_list = []
     for x in range(5):
         now = str(arrow.utcnow().format('YYYY-MM-DD HH:mm:ss'))
-        dates_list.append(now)
+
+        dicEvent = {}
+        dicEvent['date'] = now
+        jsondump = json.dumps(dicEvent)
+        dates_list.append(jsondump)
+        print(jsondump)
 
     return render_template('dates.html', dates = dates_list)
 
