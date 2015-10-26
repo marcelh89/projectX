@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    {{ super() }}
+
+    <link rel="stylesheet" type="text/css" href="/static/css/timeline.css">
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+
+        <div id="mytimeline"></div>
+
+    </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/static/js/timeline.js"></script>
+
+    <script type="text/javascript">
+        var timeline;
+
+        google.load("visualization", "1");
+
+        // Set callback to run when API is loaded
+        google.setOnLoadCallback(drawVisualization);
+
+
+        // Called when the Visualization API is loaded.
+        function drawVisualization() {
+            // Create and populate a data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('datetime', 'start');
+            data.addColumn('datetime', 'end');
+            data.addColumn('string', 'content');
+
+
+            var urlwithid = "/api/randomevents/";
+
+
+            $.ajax({
+                method: "GET",
+                url: urlwithid
+            })
+                    .done(function (uploadsData) {
+                        responseData = JSON.parse(uploadsData);
+                        console.log(responseData);
+
+
+                        //dynamic load from api
+                        $(responseData.dates).each(function (index) {
+                            var name = this.name
+                            var date = new Date(this.date.replace(/-/g, "/"));
+                            console.log(date)
+
+                            data.addRow([date, , name]);
+
+                        });
+
+
+                        //static example e.g. with picture
+                        data.addRows([
+                            [new Date(2015, 9, 23), , 'Conversation<br>' +
+                            '<img src="http://dummyimage.com/300.png/09f/fff" style="width:32px; height:32px;">'],
+                            [new Date(2015, 10, 10, 23, 0, 0), , 'Mail from boss<br>' +
+                            '<img src="http://dummyimage.com/300.png/09f/fff" style="width:32px; height:32px;">']
+                        ]);
+
+                        // specify options
+                        var options = {
+                            "width": "100%",
+                            "height": "300px",
+                            "style": "box"
+                        };
+
+                        // Instantiate our timeline object.
+                        timeline = new links.Timeline(document.getElementById('mytimeline'), options);
+
+                        // Draw our timeline with the created data and options
+                        timeline.draw(data);
+
+                    });
+
+        }
+    </script>
+{% endblock %}

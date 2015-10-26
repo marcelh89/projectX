@@ -9,6 +9,11 @@ def hello():
     return render_template('index.html')
 
 
+@app.route("/timeline")
+def timeline():
+    return render_template('timeline.html')
+
+
 @app.route("/randomdates")
-def random():
+def randomdates():
     return render_template('dates.html', id=1)

@@ -9,9 +9,17 @@
 
     <div class="content">
 
-        <h1>Hallo Bootstrapwelt :D</h1>
         <hello></hello>
+
+        <h3>Routen</h3>
+        <ul>
+            <li><a href="{{ url_for('hello') }}">Index</a></li>
+            <li><a href="{{ url_for('timeline') }}">Timeline</a></li>
+            <li><a href="{{ url_for('randomdates') }}">RandomDates</a></li>
+        </ul>
+
+
     </div>
 
-<script type="riot/tag" src="/static/tag/hello.tag"></script>
+    <script type="riot/tag" src="/static/tag/hello.tag"></script>
 {% endblock %}
