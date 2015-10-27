@@ -1,31 +1,62 @@
 <eventlist>
-    <h1>EventList</h1>
-    <event each={this.events} data={this}></event>
+    <h1 id="listname">Deathlist</h1>
+    <newuser></newuser>
+    <name  each={name in this.names} name={name} schrei={this.sayName}></name>
 
     <script>
     this.on('mount', function() {
-        console.log(opts)
-        urlwithid =  "/api/randomevents/?id=" + opts.id
-        var that = this
-        $.ajax({
-            method: "GET",
-            url: urlwithid
-        })
-        .done(function( uploadsData ) {
-            responseData = JSON.parse(uploadsData)
-            console.log(responseData)
-            that.events = responseData.dates
+        that = this;
+        var randomnumber = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
+        var intvalue = Math.round( randomnumber );
+        console.log(intvalue)
+        setTimeout(function(){
+            that.names = ['Bob', 'Alice']
             that.update()
-        });
+        }, intvalue);
     })
+
+    addName(val) {
+        this.names.push(val)
+        this.update()
+    }
+
+    kill(val) {
+        this.names.pop(val)
+    }
+
+    sayName(name) {
+        console.log(name)
+        this.listname.innerText = 'LoveList'
+    }
     </script>
 </eventlist>
 
-<event>
-    <h5 id="headline">EVENT</h5>
+<newuser>
+    <h1>neuer name</h1>
+    <input id=name type=text placeholder="Name"></input>
+    <button onClick={neuerName}>Anlegen</button>
+
     <script>
-        this.on('mount', function() {
-            this.headline.innerText = 'Event ' +  opts.data.date
-        })
+        neuerName() {
+            if (this.name.value.length > 0) {
+                this.parent.addName(this.name.value)
+            }
+        }
+
     </script>
-</event>
+</newuser>
+
+<name>
+    <h1 onClick={los}>{opts.name}</h1>
+    <button onClick={killme}>kill</button>
+
+    <script>
+    killme() {
+        this.parent.kill(opts.name)
+    }
+
+    los() {
+        opts.schrei('dont kill :' + opts.name)
+    }
+    </script>
+</name>
