@@ -5,15 +5,17 @@
 
     <script>
     this.on('mount', function() {
-        that = this;
+
         var randomnumber = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
         var intvalue = Math.round( randomnumber );
         console.log(intvalue)
-        setTimeout(function(){
-            that.names = ['Bob', 'Alice']
-            that.update()
-        }, intvalue);
+        setTimeout(this.initvalues(), intvalue);
     })
+
+    initvalues() {
+        this.names = ['Bob', 'Alice']
+        this.update()
+    }
 
     addName(val) {
         this.names.push(val)
