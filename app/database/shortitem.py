@@ -3,7 +3,7 @@ from mongoengine import *
 import datetime
 
 class Shortitem(Document):
-    created = DateTimeField(default=datetime.datetime.now)
+    created = DateTimeField(default=datetime.datetime.utcnow)
     message = StringField()
 
     meta = {
