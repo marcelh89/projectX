@@ -1,13 +1,13 @@
-#app:
-#  build: app/.
-#  volumes:
-#  - ./app/.:/usr/src/app:ro
-#  ports:
-#      - "5000:5000"
-#  environment:
-#  - HOSTNAMEMONGO=mongo
-#  links:
-#  - mongo
+app:
+  build: app/.
+  volumes:
+  - ./app/.:/usr/src/app:ro
+  ports:
+      - "5000:5000"
+  environment:
+  - HOSTNAMEMONGO=mongo
+  links:
+  - mongo
 
 #http://tedwise.com/2015/05/02/setting-the-timezone-in-a-docker-image
 mongo:
