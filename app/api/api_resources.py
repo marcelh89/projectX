@@ -1,10 +1,10 @@
 __author__ = 'marcman'
 
 import arrow
-from flask import jsonify
-from flask_restful import Resource
 import json
-
+from flask import Flask, request
+from flask_restful import Resource
+from database.shortitem import Shortitem
 
 class HelloWorld(Resource):
     def get(self):
@@ -38,3 +38,19 @@ class api_randomevents(Resource):
             dates_list.append(dicEvent)
         data['dates'] = dates_list
         return json.dumps(data)  # from flask import jsonify geht nicht, subevents werden nicht angezeigt
+
+class api_shortitems(Resource):
+    def get(self):
+
+        items = []
+        for shortitem in Shortitem.objects():
+            item = {}
+            item['message'] = shortitem.message
+            item['created'] = str(shortitem.created)
+            items.append(item)
+        return json.dumps(items)
+
+    def post(self):
+        val = request.form['val']
+        shortItem = Shortitem(message=val).save()
+        return ""

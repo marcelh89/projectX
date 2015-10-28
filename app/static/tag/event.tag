@@ -6,7 +6,7 @@
     <script>
     this.on('mount', function() {
 
-        var randomnumber = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
+        var randomnumber = Math.floor(Math.random() * (8000 - 3000 + 1)) + 1000;
         var intvalue = Math.round( randomnumber );
         console.log(intvalue)
         setTimeout(this.initvalues(), intvalue);

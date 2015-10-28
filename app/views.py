@@ -11,8 +11,11 @@ def hello():
 
 @app.route("/timeline")
 def timeline():
-    return render_template('timeline.html')
+    return render_template('timeline.html')\
 
+@app.route("/expire")
+def expire():
+    return render_template('expire.html')
 
 @app.route("/randomdates")
 def randomdates():

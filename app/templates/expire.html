@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block styles %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<expire></expire>
+
+<script type="riot/tag" src="/static/tag/expire.tag"></script>
+{% endblock %}
